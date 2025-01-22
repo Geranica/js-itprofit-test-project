@@ -1,0 +1,17 @@
+@function clampBuilder($minValue, $maxValue, $minViewport: 320, $maxViewport: 1440) {
+  $minValuePerRem: calc($minValue / 16);
+  $maxValuePerRem: calc($maxValue / 16);
+  $minViewportPerRem: calc($minViewport / 16);
+  $maxViewportPerRem: calc($maxViewport / 16);
+
+  $slope: calc(($maxValuePerRem - $minValuePerRem) / ($maxViewportPerRem - $minViewportPerRem));
+
+  $yAxisIntersection: -$minViewportPerRem * $slope + $minValuePerRem;
+  $result: clamp(
+    #{$minValuePerRem}rem,
+    #{$yAxisIntersection}rem + #{$slope * 100}vw,
+    #{$maxValuePerRem}rem
+  );
+
+  @return $result;
+}

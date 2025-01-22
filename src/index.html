@@ -6,16 +6,74 @@
     <title>itprofit</title>
   </head>
   <body>
-    <header>
-      <h1>Test header</h1>
-    </header>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Test header</h1>
+      </header>
 
-    <main>
-      <div>Test main</div>
-    </main>
+      <main class="page">
+        <section class="page__feedback-form feedback-form">
+          <div class="feedback-form__container container">
+            <form class="feedback-form__main">
+              <div class="feedback-form__wrapper">
+                <h2 class="feedback-form__title">Website Feedback Form</h2>
+                <p class="feedback-form__description">
+                  Please share your thoughts and suggestions to help us improve your experience on
+                  our website.
+                </p>
+                <div class="feedback-form__group">
+                  <label for="name" class="feedback-form__label">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="feedback-form__input"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="feedback-form__group">
+                  <label for="email" class="feedback-form__label">Your Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="feedback-form__input"
+                    placeholder="Your email"
+                    required
+                  />
+                </div>
+                <div class="feedback-form__group">
+                  <label for="phone" class="feedback-form__label">Your Phone</label>
+                  <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    class="feedback-form__input"
+                    placeholder="Enter your phone number"
+                    required
+                  />
+                </div>
+                <div class="feedback-form__group">
+                  <label for="message" class="feedback-form__label">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    class="feedback-form__textarea"
+                    placeholder="Your message"
+                    required
+                  ></textarea>
+                </div>
+                <button class="feedback-form__button button">Submit</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
 
-    <footer>
-      <p>Test footer</p>
-    </footer>
+      <footer>
+        <p>Test footer</p>
+      </footer>
+    </div>
   </body>
 </html>
