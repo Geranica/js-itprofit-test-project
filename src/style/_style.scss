@@ -89,6 +89,12 @@ body {
       border-color: var.$light-blue;
       box-shadow: var.$first-shadow;
     }
+    &[aria-invalid='true'] {
+      border-color: var.$error;
+    }
+    &[aria-invalid='false'] {
+      border-color: var.$success;
+    }
   }
 
   // .feedback-form__textarea
@@ -104,6 +110,12 @@ body {
     &:focus {
       border-color: var.$light-blue;
       box-shadow: var.$first-shadow;
+    }
+    &[aria-invalid='true'] {
+      border-color: var.$error;
+    }
+    &[aria-invalid='false'] {
+      border-color: var.$success;
     }
   }
 
@@ -133,5 +145,12 @@ body {
     text-align: center;
     font-size: 14px;
     color: var.$gray;
+  }
+
+  // .feedback-form__field-error
+
+  &__field-error {
+    color: var.$error;
+    font-size: 14px;
   }
 }
