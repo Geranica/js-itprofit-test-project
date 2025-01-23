@@ -14,7 +14,7 @@
       <main class="page">
         <section class="page__feedback-form feedback-form">
           <div class="feedback-form__container container">
-            <form class="feedback-form__main">
+            <form class="feedback-form__main" data-feedback-form novalidate>
               <div class="feedback-form__wrapper">
                 <h2 class="feedback-form__title">Website Feedback Form</h2>
                 <p class="feedback-form__description">
@@ -30,7 +30,14 @@
                     class="feedback-form__input"
                     placeholder="Your name"
                     required
+                    pattern="[a-zA-Z]+(?:\s+[a-zA-Z]+)*$"
+                    aria-errormessage="name-input-error"
                   />
+                  <span
+                    class="feedback-form__field-error"
+                    data-feedback-form-field-error
+                    id="name-input-error"
+                  ></span>
                 </div>
                 <div class="feedback-form__group">
                   <label for="email-input" class="feedback-form__label">Your Email</label>
@@ -41,7 +48,15 @@
                     class="feedback-form__input"
                     placeholder="Your email"
                     required
+                    pattern="[a-zA-Z0-9.!#$%&’*+\/=?^_`\{\|\}~\-]+@[a-zA-Z0-9\-]+(?:\.[a-zA-Z0-9\-]+)*$"
+                    title="Enter a valid email address, like example@domain.com. Allowed characters: letters, numbers, and .!#$%&’*+/=?^_`{|}~-. The domain must include letters or numbers and end with a valid extension."
+                    aria-errormessage="email-input-error"
                   />
+                  <span
+                    class="feedback-form__field-error"
+                    data-feedback-form-field-error
+                    id="email-input-error"
+                  ></span>
                 </div>
                 <div class="feedback-form__group">
                   <label for="phone-input" class="feedback-form__label">Your Phone</label>
@@ -52,7 +67,13 @@
                     class="feedback-form__input"
                     placeholder="Enter your phone number"
                     required
+                    aria-errormessage="phone-input-error"
                   />
+                  <span
+                    class="feedback-form__field-error"
+                    data-feedback-form-field-error
+                    id="phone-input-error"
+                  ></span>
                 </div>
                 <div class="feedback-form__group">
                   <label for="message-textarea" class="feedback-form__label">Message</label>
@@ -62,7 +83,13 @@
                     class="feedback-form__textarea"
                     placeholder="Your message"
                     required
+                    aria-errormessage="message-textarea-error"
                   ></textarea>
+                  <span
+                    class="feedback-form__field-error"
+                    data-feedback-form-field-error
+                    id="message-textarea-error"
+                  ></span>
                 </div>
                 <button class="feedback-form__button button">Submit</button>
               </div>
