@@ -25,13 +25,14 @@
                   <label for="name-input" class="feedback-form__label">Your Name</label>
                   <input
                     type="text"
-                    id="name-input"
+                    id="name"
                     name="name"
-                    class="feedback-form__input"
+                    class="feedback-form__field"
                     placeholder="Your name"
                     required
                     pattern="[a-zA-Z]+(?:\s+[a-zA-Z]+)*$"
                     aria-errormessage="name-input-error"
+                    data-feedback-form-field
                   />
                   <span
                     class="feedback-form__field-error"
@@ -43,14 +44,15 @@
                   <label for="email-input" class="feedback-form__label">Your Email</label>
                   <input
                     type="email"
-                    id="email-input"
+                    id="email"
                     name="email"
-                    class="feedback-form__input"
+                    class="feedback-form__field"
                     placeholder="Your email"
                     required
                     pattern="[a-zA-Z0-9.!#$%&’*+\/=?^_`\{\|\}~\-]+@[a-zA-Z0-9\-]+(?:\.[a-zA-Z0-9\-]+)*$"
                     title="Enter a valid email address, like example@domain.com. Allowed characters: letters, numbers, and .!#$%&’*+/=?^_`{|}~-. The domain must include letters or numbers and end with a valid extension."
                     aria-errormessage="email-input-error"
+                    data-feedback-form-field
                   />
                   <span
                     class="feedback-form__field-error"
@@ -62,12 +64,13 @@
                   <label for="phone-input" class="feedback-form__label">Your Phone</label>
                   <input
                     type="text"
-                    id="phone-input"
+                    id="phone"
                     name="phone"
-                    class="feedback-form__input"
+                    class="feedback-form__field"
                     placeholder="Enter your phone number"
                     required
                     aria-errormessage="phone-input-error"
+                    data-feedback-form-field
                   />
                   <span
                     class="feedback-form__field-error"
@@ -78,12 +81,13 @@
                 <div class="feedback-form__group">
                   <label for="message-textarea" class="feedback-form__label">Message</label>
                   <textarea
-                    id="message-textarea"
+                    id="message"
                     name="message"
-                    class="feedback-form__textarea"
+                    class="feedback-form__field feedback-form__textarea"
                     placeholder="Your message"
                     required
                     aria-errormessage="message-textarea-error"
+                    data-feedback-form-field
                   ></textarea>
                   <span
                     class="feedback-form__field-error"
@@ -92,6 +96,10 @@
                   ></span>
                 </div>
                 <button class="feedback-form__button button">Submit</button>
+                <div data-feedback-spinner class="feedback-form__spinner">
+                  <img src="./assets/loading.gif" alt="Loading..."/>
+                </div>
+                <div data-feedback-message class="feedback-form__message-container"></div>
               </div>
             </form>
           </div>
