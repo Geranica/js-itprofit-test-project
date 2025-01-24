@@ -7,11 +7,21 @@
   </head>
   <body>
     <div class="wrapper">
-      <header class="header">
-        <h1>Test header</h1>
-      </header>
-
       <main class="page">
+        <div class="page__modal-block modal-block">
+          <button data-modal-open class="modal-block__button button">Open Modal</button>
+          <dialog data-modal class="modal-block__modal modal">
+            <div class="modal__inner">
+              <h3 class="modal__title">Thank you for your feedback!</h3>
+              <p>
+                We appreciate your time and are constantly working to improve our service. If you
+                have any additional comments, feel free to share them. We will contact you if
+                further details are needed.
+              </p>
+              <button data-modal-close class="modal__close-button button" type="button">Close</button>
+            </div>
+          </dialog>
+        </div>
         <section class="page__feedback-form feedback-form">
           <div class="feedback-form__container container">
             <form class="feedback-form__main" data-feedback-form novalidate>
@@ -97,7 +107,7 @@
                 </div>
                 <button class="feedback-form__button button">Submit</button>
                 <div data-feedback-spinner class="feedback-form__spinner">
-                  <img src="./assets/loading.gif" alt="Loading..."/>
+                  <img src="./assets/loading.gif" alt="Loading..." />
                 </div>
                 <div data-feedback-message class="feedback-form__message-container"></div>
               </div>
@@ -105,10 +115,6 @@
           </div>
         </section>
       </main>
-
-      <footer>
-        <p>Test footer</p>
-      </footer>
     </div>
   </body>
 </html>
