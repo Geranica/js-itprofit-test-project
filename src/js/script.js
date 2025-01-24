@@ -6,11 +6,8 @@ import './../index.scss';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-import { phoneMask } from './modules/phoneMask/phoneMask';
-import { MASK_TEMPLATES } from './modules/phoneMask/constants';
-import { FormValidation } from './modules/formValidation/formValidation';
+import { FormController } from './modules/formController/formController';
 
 window.addEventListener('DOMContentLoaded', () => {
-  phoneMask('#phone-input', MASK_TEMPLATES.DE);
-  new FormValidation();
+  new FormController();
 });

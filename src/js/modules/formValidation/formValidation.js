@@ -1,6 +1,5 @@
 export class FormValidation {
   formSelectors = {
-    form: '[data-feedback-form]',
     formFieldErrors: '[data-feedback-form-field-error]',
   };
 
@@ -10,10 +9,6 @@ export class FormValidation {
     tooShort: ({ minLength }) => `Minimum length for this field is ${minLength} characters.`,
     tooLong: ({ maxLength }) => `Maximum length for this field is ${maxLength} characters.`,
   };
-
-  constructor() {
-    this.bindEvents();
-  }
 
   validateFormField(formFieldControlElement) {
     const errors = formFieldControlElement.validity;
@@ -28,10 +23,35 @@ export class FormValidation {
     this.manageErrors(formFieldControlElement, errorMessages);
 
     const isValid = errorMessages.length === 0;
-
     formFieldControlElement.ariaInvalid = !isValid;
 
+    formFieldControlElement.classList.remove(
+      'feedback-form__field_valid',
+      'feedback-form__field_invalid'
+    );
+
+    if (isValid) {
+      formFieldControlElement.classList.add('feedback-form__field_valid');
+    } else {
+      formFieldControlElement.classList.add('feedback-form__field_invalid');
+    }
+
     return isValid;
+  }
+
+  validateForm(formElement) {
+    const requiredControlElements = [...formElement.elements].filter((item) => item.required);
+
+    let isFormValid = true;
+
+    requiredControlElements.forEach((item) => {
+      const isFieldValid = this.validateFormField(item);
+      if (!isFieldValid) {
+        isFormValid = false;
+      }
+    });
+
+    return isFormValid;
   }
 
   manageErrors(formFieldControlElement, errorMessages) {
@@ -42,39 +62,5 @@ export class FormValidation {
     formFieldErrorElement.innerHTML = errorMessages
       .map((item) => `<span class="feedback-form__field-error">${item}</span>`)
       .join('');
-  }
-
-  onSubmit(event) {
-    const isFormElement = event.target.matches(this.formSelectors.form);
-
-    if (!isFormElement) return;
-
-    const requiredControlElements = [...event.target.elements].filter((item) => item.required);
-
-    let isFormValid = true;
-    let firstInvalidFieldControl = null;
-
-    requiredControlElements.forEach((item) => {
-      const isFormFieldValid = this.validateFormField(item);
-
-      if (!isFormFieldValid) {
-        isFormValid = false;
-
-        if (!firstInvalidFieldControl) {
-          firstInvalidFieldControl = item;
-        }
-      }
-    });
-
-    if (!isFormValid) {
-      event.preventDefault();
-      firstInvalidFieldControl.focus();
-    }
-  }
-
-  bindEvents() {
-    document.addEventListener('submit', (event) => {
-      this.onSubmit(event);
-    });
   }
 }

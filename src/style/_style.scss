@@ -77,9 +77,9 @@ body {
     font-weight: 700;
   }
 
-  // .feedback-form__input
+  // .feedback-form__field
 
-  &__input {
+  &__field {
     font-size: fn.clampBuilder(14, 16);
     border-radius: 8px;
     padding: 10px 14px;
@@ -89,34 +89,19 @@ body {
       border-color: var.$light-blue;
       box-shadow: var.$first-shadow;
     }
-    &[aria-invalid='true'] {
-      border-color: var.$error;
+    &_valid {
+      border-color: var.$valid;
     }
-    &[aria-invalid='false'] {
-      border-color: var.$success;
+    &_invalid {
+      border-color: var.$error;
     }
   }
 
   // .feedback-form__textarea
 
   &__textarea {
-    font-size: fn.clampBuilder(14, 16);
-    border-radius: 8px;
-    padding: 10px 14px;
-    border: 1px solid var.$light-gray;
-    transition: border-color 0.3s, box-shadow 0.3s;
     resize: none;
     min-height: 128px;
-    &:focus {
-      border-color: var.$light-blue;
-      box-shadow: var.$first-shadow;
-    }
-    &[aria-invalid='true'] {
-      border-color: var.$error;
-    }
-    &[aria-invalid='false'] {
-      border-color: var.$success;
-    }
   }
 
   // .feedback-form__button
@@ -152,5 +137,62 @@ body {
   &__field-error {
     color: var.$error;
     font-size: 14px;
+  }
+
+  // .feedback-form__message-container
+
+  &__message-container {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &_success {
+      background-color: var.$valid-light;
+      color: var.$valid-dark;
+      border: 1px solid var.$valid-light;
+    }
+
+    &_error {
+      background-color: var.$error-light;
+      color: var.$error-dark;
+      border: 1px solid var.$error-light;
+    }
+  }
+  // .feedback-form__message-title
+
+  &__message-title {
+    font-weight: 700;
+    font-size: fn.clampBuilder(15, 18);
+
+    &_error {
+      color: var.$error;
+    }
+    &_success {
+      color: var.$valid;
+    }
+  }
+
+  // .feedback-form__close-button
+
+  &__close-button {
+    align-self: flex-end;
+  }
+
+  // .feedback-form__spinner
+
+  &__spinner {
+    display: none;
+    justify-content: center;
+    & img {
+      width: 50px;
+      height: 50px;
+    }
+    &_active {
+      display: flex;
+    }
   }
 }
