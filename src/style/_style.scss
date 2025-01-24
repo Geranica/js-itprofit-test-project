@@ -1,11 +1,16 @@
 @use 'var';
 @use 'fn';
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: var.$font-family;
   line-height: 1.3;
   font-weight: 400;
   font-size: var.$root-fz;
+  scrollbar-gutter: stable;
 }
 
 .container {
@@ -40,6 +45,14 @@ body {
   flex: 1 1 auto;
 
   &__feedback-form {
+  }
+
+  // .page__modal-block
+
+  &__modal-block {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
   }
 }
 .feedback-form {
@@ -194,5 +207,98 @@ body {
     &_active {
       display: flex;
     }
+  }
+}
+
+.modal-block {
+  // .modal-block__button
+
+  &__button {
+    border: 1px solid var.$dark-black;
+    background-color: var.$dark-black;
+    color: var.$white;
+    line-height: 1.5;
+  }
+
+  // .modal-block__modal
+
+  &__modal {
+  }
+}
+
+.modal {
+  position: fixed;
+  inset-block-start: 0px;
+  inset-block-end: 0px;
+  max-width: calc(100% - 2em - 6px);
+  max-height: calc(100% - 2em - 6px);
+  user-select: text;
+  visibility: visible;
+  overlay: auto;
+  margin: auto;
+  display: block;
+  inset: 0;
+  z-index: 1000000;
+  overflow: hidden;
+  transition: opacity 0.5s;
+  animation: scale-down 0.5s cubic-bezier(0.25, 0, 0.3, 1) forwards;
+  animation-timing-function: cubic-bezier(0.5, -0.5, 0.1, 1.5);
+  border-radius: 10px;
+  border: solid 1px #ccc;
+  box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.5);
+  padding: 0;
+  max-inline-size: min(90vw, 60ch);
+  max-block-size: min(80vh, 100%);
+
+  &[open] {
+    animation: slide-in-up cubic-bezier(0.25, 0, 0.3, 1) 0.5s forwards;
+  }
+
+  &:not([open]) {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  &::backdrop {
+    background-color: rgb(0 0 0 / 0.8);
+    backdrop-filter: blur(7px);
+  }
+
+  // .modal__inner
+
+  &__inner {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  // .modal__title
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: fn.clampBuilder(27, 32);
+  }
+
+  // .modal__close-button
+
+  &__close-button {
+    align-self: flex-end;
+    border: 1px solid var.$dark-black;
+    background-color: var.$dark-black;
+    color: var.$white;
+    line-height: 1.5;
+  }
+}
+
+.block-scroll {
+  overflow: hidden;
+}
+
+@keyframes slide-in-up {
+  0% {
+    transform: translateY(100%);
   }
 }
