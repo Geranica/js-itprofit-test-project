@@ -60,7 +60,7 @@ export class FormController {
 
     setTimeout(() => {
       messageContainer.innerHTML = '';
-      messageContainer.classList.remove('feedback-form__message-container_success}');
+      messageContainer.classList.remove('feedback-form__message-container_success');
     }, 4000);
   }
 
@@ -88,7 +88,7 @@ export class FormController {
 
     const closeButton = document.createElement('button');
     closeButton.innerHTML = 'Close';
-    closeButton.classList.add('button', 'feedback-form__close-button');
+    closeButton.classList.add('button', 'feedback-form__close-button', 'button_red');
     closeButton.addEventListener('click', () => {
       messageContainer.innerHTML = '';
       messageContainer.classList.remove('feedback-form__message-container_error');

@@ -27,9 +27,6 @@ body {
   flex-direction: column;
 }
 
-.header {
-}
-
 .button {
   display: inline-flex;
   justify-content: center;
@@ -38,14 +35,22 @@ body {
   min-height: 48px;
   padding: 12px 20px;
   border-radius: 8px;
+  line-height: 1.5;
+
+  &_black {
+    border: 1px solid var.$dark-black;
+    background-color: var.$dark-black;
+    color: var.$white;
+  }
+  &_red {
+    border: 1px solid var.$error;
+    background-color: var.$error-dark;
+    color: var.$white;
+  }
 }
 
 .page {
-  // .page__feedback-form
   flex: 1 1 auto;
-
-  &__feedback-form {
-  }
 
   // .page__modal-block
 
@@ -55,6 +60,7 @@ body {
     padding: 20px;
   }
 }
+
 .feedback-form {
   // .feedback-form__container
 
@@ -62,17 +68,12 @@ body {
     max-width: 531px;
   }
 
-  // .feedback-form__main
-
-  &__main {
-  }
-
   // .feedback-form__wrapper
 
   &__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: fn.clampBuilder(19, 24);
   }
 
   // .feedback-form__group
@@ -80,7 +81,7 @@ body {
   &__group {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: fn.clampBuilder(14, 16);
   }
 
   // .feedback-form__label
@@ -115,15 +116,6 @@ body {
   &__textarea {
     resize: none;
     min-height: 128px;
-  }
-
-  // .feedback-form__button
-
-  &__button {
-    border: 1px solid var.$dark-black;
-    background-color: var.$dark-black;
-    color: var.$white;
-    line-height: 1.5;
   }
 
   // .feedback-form__title
@@ -211,34 +203,23 @@ body {
 }
 
 .modal-block {
-  // .modal-block__button
-
-  &__button {
-    border: 1px solid var.$dark-black;
-    background-color: var.$dark-black;
-    color: var.$white;
-    line-height: 1.5;
-  }
-
   // .modal-block__modal
 
   &__modal {
+    margin: auto;
+    padding: 0;
   }
 }
 
 .modal {
   position: fixed;
-  inset-block-start: 0px;
-  inset-block-end: 0px;
   max-width: calc(100% - 2em - 6px);
   max-height: calc(100% - 2em - 6px);
-  user-select: text;
   visibility: visible;
   overlay: auto;
-  margin: auto;
   display: block;
   inset: 0;
-  z-index: 1000000;
+  z-index: var.$z-index-max;
   overflow: hidden;
   transition: opacity 0.5s;
   animation: scale-down 0.5s cubic-bezier(0.25, 0, 0.3, 1) forwards;
@@ -246,7 +227,6 @@ body {
   border-radius: 10px;
   border: solid 1px #ccc;
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.5);
-  padding: 0;
   max-inline-size: min(90vw, 60ch);
   max-block-size: min(80vh, 100%);
 
@@ -280,16 +260,19 @@ body {
     justify-content: center;
     font-weight: 700;
     font-size: fn.clampBuilder(27, 32);
+    text-align: center;
+  }
+
+  // .modal__text
+
+  &__text {
+    text-align: center;
   }
 
   // .modal__close-button
 
   &__close-button {
     align-self: flex-end;
-    border: 1px solid var.$dark-black;
-    background-color: var.$dark-black;
-    color: var.$white;
-    line-height: 1.5;
   }
 }
 
