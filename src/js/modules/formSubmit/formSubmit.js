@@ -5,8 +5,7 @@ const httpService = new HTTPService();
 
 export const formSubmit = async (data) => {
   try {
-    const result = await httpService.postRequest(API_ENDPOINTS.USER_FEDDBACK.POST_FEEDBACK, data);
-    return result;
+    return httpService.postRequest(API_ENDPOINTS.USER_FEDDBACK.POST_FEEDBACK, data);
   } catch (error) {
     throw error;
   }
